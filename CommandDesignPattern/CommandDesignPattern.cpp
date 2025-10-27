@@ -115,11 +115,13 @@ int main() {
 
     Light* livingRoomLight = new Light();
     Fan* ceilingFan = new Fan();
+    Light* kitchenLight = new Light();
 
     RemoteController* remote = new RemoteController();
 
     remote->setCommand(0, new LightCommand(livingRoomLight));
     remote->setCommand(1, new FanCommand(ceilingFan));
+    remote->setCommand(2, new LightCommand(kitchenLight));
 
     // Simulate button presses (toggle behavior)
     cout << "--- Toggling Light Button 0 ---" << endl;
@@ -131,13 +133,19 @@ int main() {
     remote->pressButton(1);  // OFF
 
     // Press unassigned button to show default message
-    cout << "--- Pressing Unassigned Button 2 ---" << endl;
+    cout << "--- Toggling Kitchen Light Button 2 ---" << endl;
     remote->pressButton(2);
+    remote->pressButton(2);  // ON
+
+
+    cout << "--- Pressing Unassigned Button 3 ---" << endl;
+    remote->pressButton(3);  // No command assigned
 
     // Clean up
     delete remote;
     delete livingRoomLight;
     delete ceilingFan;
+    delete kitchenLight;
 
     return 0;
 }
