@@ -87,5 +87,9 @@ int main() {
     delete mySUV;
     delete yourSUV;
 
+    delete petrolEng;
+    delete dieselEng;
+    delete electricEng;
+
     return 0;
 }
